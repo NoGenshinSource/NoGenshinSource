@@ -1,7 +1,7 @@
-<h1 align="center">Genshin-Private-Start</h1>
+<h1 align="center">NoGenshinSource</h1>
 <h3 align="center">Проект, который сделан на языке программировании Python. И это никак не относится к чему либо, автору делать нечего.</h3>
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffffff) [![GitHub-Project](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ExtbhiteEAS/Genshin-Private-Start) [![License-apache](https://img.shields.io/hexpm/l/plug?style=for-the-badge)](./LICENSE)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffffff) [![GitHub-Project](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NoGenshinSource/NoGenshinSource) [![License-apache](https://img.shields.io/hexpm/l/plug?style=for-the-badge)](./LICENSE)
 
 ## **Предупреждения(дисклеймер)**
 
