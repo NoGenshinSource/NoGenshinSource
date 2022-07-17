@@ -19,7 +19,7 @@
 ## Как использовать и обновлять скрипт?
 Перед тем, как это всё использовать - убедитесь что у вас есть:
 - Fiddler, javaDevelopmentKit(версия jdk-17.0.3.1), mongoDB.
-- Python(Желательно версии 3.10, так как здесь присутствует махинация с match, питонисты поймут).
+- Python(Желательно версии 3.10, большинства функций сделано именно на нём).
 - WinRAR(Для клиента сервера).
 - Клиент для 2.8: [1 архив](https://drive.google.com/file/d/1KeyK1WMy6XLyQ2IcyjCnN0LugQps4pMn/view) | [2 архив](https://drive.google.com/file/d/1U3VpiBTxWMZ05ghWsKOERqfnVU5BMKDV/view) | [3 архив](https://drive.google.com/file/d/1irQ8Iv9TderVZ8gEpBWEZqaCsUguF_lL/view)
 - Прямые руки и мозги.
