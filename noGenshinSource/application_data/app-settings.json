@@ -1,0 +1,6 @@
+{
+    "main-application": {
+        "localisation": "local_russian",
+        "pycache-clear": true
+    }
+}
