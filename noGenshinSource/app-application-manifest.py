@@ -80,6 +80,8 @@ class ManifestApplication:
                 print("[INF] log: deleting cache...")
                 os.system("del noGenshinSource\\application_data\__pycache__\systemapp_package.cpython-310.pyc")
                 os.system("del noGenshinSource\\__pycache__\\app_application_settings.cpython-310.pyc")
+                os.system("del __pycache__\\api_localgithub_updater.cpython-310.pyc")
+                os.system("RMDIR __pycache__")
                 os.system("RMDIR noGenshinSource\\application_data\__pycache__ && RMDIR noGenshinSource\\__pycache__")
                 print("[INF] log: deleted cache.")
             if pycache_clear == False:
