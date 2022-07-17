@@ -1,9 +1,9 @@
 {
     "api-updater": {
-        "versionUpdaterCheck": "none",
+        "versionUpdaterCheck": "https://raw.githubusercontent.com/NoGenshinSource/NoGenshinSource/development/noGenshinSource/application_data/updaterData/api-localgithub-config.json",
         "version": {
             "author": "Extbhite",
-            "version": "0.2.8_alpha"
+            "version": "0.2.8_beta"
         }
     }
 }
