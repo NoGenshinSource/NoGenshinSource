@@ -1,0 +1,19 @@
+{
+    "main-application": {
+        "localisation": "local_russian",
+        "pycache-clear": true,
+        "default": {
+            "thanks_message": {
+                "russian": {
+                    "title": "Благодарю за установку",
+                    "message": "Хоть это программа сделана на коленях и БЕЗ всякого труда, то оно практически в плане использование. Но с полным ознакомлением вам стоит прочитать README_noGenshinSource.md после скачивание Server.zip, но лучше всего вам стоит использовать Cultivation который намного лучше этой программы."
+                },
+                "english": {
+                    "title": "",
+                    "message": ""
+                },
+                "status_messagebox_show": true
+            }
+        }
+    }
+}
