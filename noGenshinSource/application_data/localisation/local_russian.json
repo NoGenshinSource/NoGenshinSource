@@ -1,9 +1,0 @@
-{
-    "1_thanks_for_installing": "Благодарю за установку \"Genshin Private Start\" скрипта.\nЭтот проект абстолютно бесплатен, и если же вы скачали его оплатив или скачали с другого ресурса от рук злоумышленника - то удалите немедленно и не открывайте этот скрипт.\nС полным ознакомлением информацией и прочее стоит прочитать introduce.txt\n\nGitHub: https://github.com/ExtbhiteEAS",
-    "2_starting_fiddler": "[INF] Запускаю Fiddler...",
-    "3_started_fiddler": "[INF] Fiddler был запущен.",
-    "4_paste_jar_name": "",
-    "5_starting_jar_package": "[INF] Запускаю пакет jar-файла...",
-    "6_starting_genshin_impact": "[INF] Запускаю exe-файл Genshin Impact...",
-    "7_started_genshin_impact": "[INF] Запустил exe-файл Genshin Impact."
-}
