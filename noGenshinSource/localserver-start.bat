@@ -1,2 +1,0 @@
-@echo off
-python noGenshinSource\application_data\systemapp_package.py

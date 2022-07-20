@@ -1,8 +1,0 @@
-{
-    "main-application-settings": {
-        "config-grasscutter-start-patcher": "",
-        "config-startup-command": {
-            "config-start-fiddler": "start /min Fiddler.exe"
-        }
-    }
-}
