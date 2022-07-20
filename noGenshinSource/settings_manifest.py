@@ -13,14 +13,18 @@
 ## limitations under the License.
 
 from tkinter import *
+from tkinter import filedialog
 from tkinter import ttk
+from tkinter import messagebox
 from PIL import ImageTk, Image
 from application_data.updaterData import localgithub_updater
+import json
 
 class ManifestSettings:
 
     def __init__(self):
         self.window = Toplevel() # // Я и не думал, что решу проблему с картинками вот так вот..
+        self.JarPathTitle = "Select server path"
         # // Tkinter, ты полная хуйня, уж извини. Может Python не для интерфейса сделан и бла-бла, но хоть что-то может.
 
     def close_settings(self):
@@ -30,6 +34,24 @@ class ManifestSettings:
     def updaterScriptClick(self):
         master_update = localgithub_updater.UpdaterManifest()
         master_update.UpdaterManager()
+
+    def pathSelect(self):
+        serverDirectory = filedialog.askdirectory(
+            title=self.JarPathTitle
+        )
+
+        print(f"[INF] log: settings: jarPath: patching '{serverDirectory}'")
+        with open("noGenshinSource\\application_data\\configuration.json", "r", encoding="utf-8") as config:
+            jar_path_config = json.load(config)
+        jar_path_config["main-application-settings"]["config-grasscutter-start-patcher"] = serverDirectory
+        with open("noGenshinSource\\application_data\\configuration.json", "w", encoding="utf-8") as config:
+            json.dump(jar_path_config, config, indent=4)
+        print(f"[INF] log: settings: jarPath: patched '{serverDirectory}'")
+
+        messagebox.showinfo(
+            title="Jar Patcher",
+            message="Successfully patched application with jar file and server"
+        )
 
     def set_settings_window(self):
         self.window.title("NoGenshinSource_settings")
@@ -81,9 +103,29 @@ class ManifestSettings:
             highlightthickness=0
         )
 
+        btn_jar_path = ImageTk.PhotoImage(Image.open("noGenshinSource\\application_image\\btn_path_jar.png"))
+        button_JarPath = Button(
+            self.window,
+            text="jarpath_btn",
+            image=btn_jar_path,
+            bg="#191919",
+            activebackground="#191919",
+            bd=0,
+            relief="sunken",
+            command=self.pathSelect
+        )
+
         comboboxLanguage = ttk.Combobox(
             self.window,
             foreground="black"
+        )
+        
+        labelJarPathContext = Label(
+            self.window,
+            text="Patching server with jar if you already have own server.\n(IF you have own server and configs!)",
+            background="#191919",
+            fg="grey",
+            font=("calibri")
         )
 
         labelUpdateContext = Label(
@@ -101,6 +143,13 @@ class ManifestSettings:
             fg="grey",
             font=("calibri")
         )
+
+        labelJarPathContext_window = canv_settings.create_window(
+            20, # // __x
+            95, # // __y
+            anchor=NW,
+            window=labelJarPathContext
+        )
         
         buttonSettings_window = canv_settings.create_window(
             760, # // __x
@@ -112,7 +161,7 @@ class ManifestSettings:
 
         labelLanguageContext_window = canv_settings.create_window(
             20, # // __x
-            95, # // __y
+            155, # // __y
             anchor=NW,
             window=labelLanguageContext
         )
@@ -123,7 +172,7 @@ class ManifestSettings:
         comboboxLanguage.current(0)
         comboboxLanguage_window = canv_settings.create_window(
             370, # // __x
-            108, # // __y
+            165, # // __y
             anchor=NW,
             window=comboboxLanguage
         )
@@ -144,6 +193,13 @@ class ManifestSettings:
             window=buttonUpdate
         )
         print("[INF] log: created window with id 'buttonUpdate_window'.")
+
+        buttonJarPath_window = canv_settings.create_window(
+            410, # // __x
+            95, # // __y
+            anchor=NW,
+            window=button_JarPath
+        )
 
         canv_settings.pack()
         self.window.mainloop()

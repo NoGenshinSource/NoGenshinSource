@@ -12,7 +12,6 @@
 ## See the License for the specific language governing permissions and
 ## limitations under the License.
 
-
 import json
 import time
 import os
@@ -51,9 +50,7 @@ class FunctionsSystem:
 
             jar_file_name = app_config["main-application-settings"]["config-grasscutter-start-patcher"]
             print(english_lang["5_starting_jar_package"])
-            os.system(f"java -jar {jar_file_name}")
+            os.system(f"cd {jar_file_name} && java -jar grasscutter-1.2.2-dev.jar")
 
-    def GenshinApplicationStart():
-        print("[INF] Starting Genshin Impact...")
-        os.system(app_config["main-application-settings"]["config-startup-command"]["config-start-genshin"])
-        print("[INF] Started Genshin Impact...")
+root_system = FunctionsSystem(language="local_english")
+root_system.ServerStart()

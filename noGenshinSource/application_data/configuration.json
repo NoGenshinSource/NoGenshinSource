@@ -1,6 +1,6 @@
 {
     "main-application-settings": {
-        "config-grasscutter-start-patcher": "grasscutter-1.2.2-dev.jar",
+        "config-grasscutter-start-patcher": "C:/Users/extbh/Documents/useful/genshin_private/Server",
         "config-startup-command": {
             "config-start-fiddler": "start /min Fiddler.exe"
         }

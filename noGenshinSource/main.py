@@ -13,11 +13,11 @@
 ## limitations under the License.
 
 # // Импорт всяких библиотек.
-import tkinter as tk
 from tkinter import messagebox
 from PIL import ImageTk, Image
-from application_data import systemapp_package
 import settings_manifest
+import tkinter as tk
+import webbrowser
 import json
 import os
 
@@ -56,7 +56,7 @@ class ManifestApplication:
     """Создаёт само приложение и его структуру, но функции не стоит трогать - может повлиять на нестабильность.\n
 Ниже буду приведены функции, которые находятся в скрипте:
 - `self.closeApplicationClick` - закрывает процесс самого приложения, а также сам консоль в котором и работает наш GUI.
-- `self.settinsOptionClick` - открывает настройки самой программы, настройки расположены в другом системном файле, а к чему я клоню?
+- `self.settingsOptionClick` - открывает настройки самой программы, настройки расположены в другом системном файле, а к чему я клоню?
 К тому, что не нужно трогать папку `noGenshinSource\*` - на памятку. С остальными функциями настроек можно познакомиться наведя на `ManifestSettings`
 или открыть файл под названием `settings_manifest.py`, только **НИЧЕГО НЕ ТРОГАЙТЕ ЕСЛИ НЕ ЗНАЕТЕ ПРОГРАММИРОВАНИЕ!**
 - `self.launchServerClick` - запускает сервер, но только это приложение, а jar файл как известно - через саму консоль. Консоль сама не закроется,
@@ -67,7 +67,6 @@ class ManifestApplication:
 
     def __init__(self):
         self.window = tk.Tk()
-        self.systemTemp = systemapp_package.FunctionsSystem(language="local_russian")
         self.title = "NoGenshinSource"
 
     # // Закрывает приложение и саму консоль.
@@ -84,8 +83,21 @@ class ManifestApplication:
     # // Запускает сам сервер, но позже переделаю его в запуск Геншина.
     def launchServerClick(self):
         print("[INF] log: launching private server.")
+        #self.window.destroy()
+        os.system("start cmd.exe /C noGenshinSource\\localserver-start.bat")
+
+    def launchGenshinClick(self):
+        print("[INF] log: launching genshin impact client.")
         self.window.destroy()
-        self.systemTemp.ServerStart()
+        os.system("start noGenshinSource\\NoGenshinSource.lnk")
+
+    # // Открывает GitHub проект самого приложения.
+    def githubOpenBrowser(self):
+        webbrowser.open_new_tab("https://github.com/NoGenshinSource/NoGenshinSource")
+
+    # // Открывает Telegram для связи.
+    def telegramOpenBrowser(self):
+        webbrowser.open_new_tab("https://t.me/Extbhite")
 
     # // Показывает информацию о приложении.
     def informationAppClick(self): # // id: message_box_info
@@ -112,11 +124,9 @@ class ManifestApplication:
             # // Очищает кеш от автоматического создания при запуске приложении.
             if pycache_clear == True:
                 print("[INF] log: deleting cache...")
-                os.system("del noGenshinSource\\application_data\__pycache__\systemapp_package.cpython-310.pyc")
-                os.system("del noGenshinSource\\__pycache__\\settings_manifest.cpython-310.pyc")
+                os.system("del noGenshinSource\\__pycache__\\settings_manifest.cpython-310.pyc && RMDIR noGenshinSource\\__pycache__")
                 os.system("del noGenshinSource\\application_data\\updaterData\\__pycache__\\localgithub_updater.cpython-310.pyc")
                 os.system("RMDIR noGenshinSource\\application_data\\updaterData\\__pycache__")
-                os.system("RMDIR noGenshinSource\\application_data\__pycache__ && RMDIR noGenshinSource\\__pycache__")
                 print("[INF] log: deleted cache.")
             if pycache_clear == False:
                 print("[INF] log: cache clear is disabled...")
@@ -191,16 +201,15 @@ class ManifestApplication:
 
             # // Загружает кнопки и задний фон. Да и остальное понятно, то что это капец какой=то...
             img = ImageTk.PhotoImage(Image.open("noGenshinSource/application_image/background.jpg"))
-            print("[INF] log: loaded image 'background'.")
             btn_launch = "noGenshinSource/application_image/btn_launchserver.png"
-            print("[INF] log: loaded image 'btn_launch'.")
+            btn_launch_local = "noGenshinSource/application_image/btn_launch.png"
+            btn_img_github = "noGenshinSource/application_image/launcher_sm_img/github_icon.png"
+            btn_img_telegram = "noGenshinSource/application_image/launcher_sm_img/telegram_icon.png"
             btn_settings = ImageTk.PhotoImage(Image.open("noGenshinSource/application_image/btn_settings.png"))
-            print("[INF] log: loaded image 'btn_settings'.")
             btn_info = ImageTk.PhotoImage(Image.open("noGenshinSource/application_image/btn_info.png"))
-            print("[INF] log: loaded image 'btn_info'.")
             
             canv.create_image(0, 0, anchor=tk.NW, image=img)
-            print("[INF] log: Created background image.")
+            print("[INF] log: created background image.")
 
             # // Кнопка для открытия настроек.
             buttonSettings = tk.Button(
@@ -227,9 +236,42 @@ class ManifestApplication:
             )
 
             # // Создаёт окно, в котором и будут наши кнопки.
+            # // Запуск Геншина.
+            canvas_buttonLaunch = CanvasButton(
+                canv,
+                1014,
+                638,
+                btn_launch,
+                self.launchGenshinClick
+            )
+
             # // Запуск сервера.
-            canvas_buttonLaunch = CanvasButton(canv, 1014, 638, btn_launch, self.launchServerClick)
-            print("[INF] log: created button with id 'canvas_buttonLaunch'.")
+            canvas_buttonLaunchLocal = CanvasButton(
+                canv,
+                920,
+                638,
+                btn_launch_local,
+                self.launchServerClick
+            )
+
+            # // Соц. сети и прочее.
+            # // Github.
+            canvas_buttonGithub = CanvasButton(
+                canv,
+                1225,
+                60,
+                btn_img_github,
+                self.githubOpenBrowser
+            )
+            
+            # // Telegram
+            canvas_buttonTelegram = CanvasButton(
+                canv,
+                1225,
+                125,
+                btn_img_telegram,
+                self.telegramOpenBrowser
+            )
 
             # // Настройки.
             buttonSettings_window = canv.create_window(
@@ -238,7 +280,6 @@ class ManifestApplication:
                 anchor=tk.NW,
                 window=buttonSettings
             )
-            print("[INF] log: created window with id 'buttonSettings_window '.")
 
             # // Информация.
             buttonInformation_window = canv.create_window(
@@ -247,7 +288,6 @@ class ManifestApplication:
                 anchor=tk.NW,
                 window=buttonInfo
             )
-            print("[INF] log: created window with id 'buttonInformation_window '.")
 
             print("[INF] log: successfully started application.") # // Просто уведомляет о завершении
                                                                   # // успешного построение самого приложения.
