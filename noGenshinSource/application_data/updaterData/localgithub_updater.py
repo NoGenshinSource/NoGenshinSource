@@ -29,7 +29,7 @@ class UpdaterManifest:
                     )
                     print(f"[INF] log: updater: founded new version NoGenshinSource: {self.versionUpdateGet}.")
                     print("[INF] log: updater: In beta stade.\n[INF] log: updater: Downloading zip file...")
-                    downloadUrl = f"https://github.com/NoGenshinSource/NoGenshinSource/releases/download/{self.versionUpdateGet}/Server.zip"
+                    downloadUrl = f"https://github.com/NoGenshinSource/NoGenshinSource/releases/download/{self.versionUpdateGet}/NoGenshinSource.zip"
                     wget.download(downloadUrl)
                     print("\n[INF] log: updater: [INF] Downloaded zip file.")
 
